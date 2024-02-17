@@ -1,5 +1,16 @@
 import { useLocation, useNavigate } from 'react-router-dom'
 import { useAuth } from '../hook/useAuth'
+import ReactGA from 'react-ga4'
+
+
+const onClick = () => {
+    ReactGA.event({
+      category: "login_category",
+      action: "login_action",
+      label: "login_label",
+      value: 'xxxx'
+    })
+}
 
 export const LoginPage = () => {
   const navigate = useNavigate();
@@ -23,7 +34,7 @@ export const LoginPage = () => {
         <label>
           Name: <input name="username" />
         </label>
-        <button type="submit">Login</button>
+        <button type="submit" onClick={onClick}>Login</button>
       </form>
     </div>
   )
