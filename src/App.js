@@ -17,9 +17,6 @@ import { useEffect } from 'react'
 function App() {
 
   const location = useLocation()
-  console.log({location})
-
-  const titles = ['Home', 'Blog', 'About']
 
   useEffect(() => {
     ReactGA.initialize(
@@ -47,9 +44,7 @@ function App() {
     ReactGA.event({
       category: "View Page",
       action: "Go Throw Page",
-      label: "your label", // optional
-      // value: 99, // optional, must be a number
-      // nonInteraction: true, // optional, true/false
+      label: "your label"
     })
 
   }, [location.pathname])
@@ -58,8 +53,6 @@ function App() {
       <Routes>
         <Route path="/" element={<Layout />}>
           <Route index element={<Homepage />} />
-          {/*<Route index element={<Navigate to='/' replace />} />*/}
-          {/*<Route path='home' element={<Homepage />} />*/}
           <Route path="about" element={<About />}>
             <Route path="contacts" element={<p>Our contact</p>} />
             <Route path="team" element={<p>Our team</p>} />
