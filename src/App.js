@@ -1,25 +1,65 @@
-import { Routes, Route, Navigate } from 'react-router-dom';
+import { Routes, Route, Navigate, useLocation, RedirectFunction } from 'react-router-dom'
+import ReactGA from 'react-ga4'
 
-import { Homepage } from './pages/Homepage';
-import { About } from './pages/Aboutpage';
-import { Blogpage } from './pages/Blogpage';
-import { Createpost } from './pages/Createpost';
-import { Editpost } from './pages/Editpost';
-import { Singlepage } from './pages/Singlepage';
-import { Notfoundpage } from './pages/Notfoundpage';
-import { LoginPage } from './pages/Loginpage';
-
+import { Homepage } from './pages/Homepage'
+import { About } from './pages/Aboutpage'
+import { Blogpage } from './pages/Blogpage'
+import { Createpost } from './pages/Createpost'
+import { Editpost } from './pages/Editpost'
+import { Singlepage } from './pages/Singlepage'
+import { Notfoundpage } from './pages/Notfoundpage'
+import { LoginPage } from './pages/Loginpage'
 import { Layout } from './components/Layout'
-
 import { RequireAuth } from './hoc/RequireAuth'
 import { AuthProvider } from './hoc/AuthProvider'
+import { useEffect } from 'react'
 
 function App() {
+
+  const location = useLocation()
+  console.log({location})
+
+  const titles = ['Home', 'Blog', 'About']
+
+  useEffect(() => {
+    ReactGA.initialize(
+      [
+        {
+          trackingId: 'G-2VCQLP8SWM',
+          gaOptions: {
+            name: 'homepage_tracker',
+          },
+          // gtagOptions: {...}
+        },
+        {
+          trackingId: 'G-01QY50FKYF',
+          gaOptions: { name: 'blogpage_tracker' }
+        },
+        {
+          trackingId: 'G-RSP3XV0E0G',
+          gaOptions: { name: 'aboutpage_tracker' }
+        }
+      ],
+      { testMode: true }
+    )
+    ReactGA.send({ hitType: "pageview", page: location.pathname, title: "P" })
+
+    ReactGA.event({
+      category: "View Page",
+      action: "Go Throw Page",
+      label: "your label", // optional
+      // value: 99, // optional, must be a number
+      // nonInteraction: true, // optional, true/false
+    })
+
+  }, [location.pathname])
   return (
     <AuthProvider>
       <Routes>
         <Route path="/" element={<Layout />}>
           <Route index element={<Homepage />} />
+          {/*<Route index element={<Navigate to='/' replace />} />*/}
+          {/*<Route path='home' element={<Homepage />} />*/}
           <Route path="about" element={<About />}>
             <Route path="contacts" element={<p>Our contact</p>} />
             <Route path="team" element={<p>Our team</p>} />
