@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react';
 import { Link, useSearchParams } from 'react-router-dom';
 import { BlogFilter } from '../components/BlogFilter';
 
-const Blogpage = () => {
+export const Blogpage = () => {
   const [posts, setPosts] = useState([]);
   const [searchParams, setSearchParams] = useSearchParams();
 
@@ -36,5 +36,3 @@ const Blogpage = () => {
     </div>
   )
 }
-
-export {Blogpage}

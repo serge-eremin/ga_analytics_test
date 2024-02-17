@@ -1,7 +1,7 @@
 import { useParams } from 'react-router-dom'
 
-const Editpost = () => {
-  const {id} = useParams();
+export const Editpost = () => {
+  const {id} = useParams()
 
   return (
     <div>
@@ -9,5 +9,3 @@ const Editpost = () => {
     </div>
   )
 }
-
-export {Editpost}

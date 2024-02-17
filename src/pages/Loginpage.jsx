@@ -1,7 +1,7 @@
-import { useLocation, useNavigate } from 'react-router-dom';
+import { useLocation, useNavigate } from 'react-router-dom'
 import { useAuth } from '../hook/useAuth'
 
-const LoginPage = () => {
+export const LoginPage = () => {
   const navigate = useNavigate();
   const location = useLocation();
   const {signin} = useAuth();
@@ -28,5 +28,3 @@ const LoginPage = () => {
     </div>
   )
 }
-
-export {LoginPage};

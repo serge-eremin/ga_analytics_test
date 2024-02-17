@@ -1,7 +1,7 @@
 import { useAuth } from '../hook/useAuth';
 import { useNavigate } from 'react-router-dom'
 
-const Createpost = () => {
+export const Createpost = () => {
   const {signout} = useAuth();
   const navigate = useNavigate();
 
@@ -12,5 +12,3 @@ const Createpost = () => {
     </div>
   )
 }
-
-export {Createpost}

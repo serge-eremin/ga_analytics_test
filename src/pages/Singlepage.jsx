@@ -1,13 +1,13 @@
 import { useParams, Link, useNavigate } from 'react-router-dom'
 import { useState, useEffect } from 'react'
 
-const Singlepage = () => {
-  const {id} = useParams();
-  const navigate = useNavigate();
-  const [post, setPost] = useState(null);
+export const Singlepage = () => {
+  const {id} = useParams()
+  const navigate = useNavigate()
+  const [post, setPost] = useState(null)
 
   const goBack = () => navigate(-1);
-  const goHome = () => navigate('/', {replace: true});
+  const goHome = () => navigate('/', {replace: true})
 
   useEffect(() => {
     fetch(`https://jsonplaceholder.typicode.com/posts/${id}`)
@@ -30,5 +30,3 @@ const Singlepage = () => {
     </div>
   )
 }
-
-export {Singlepage}
