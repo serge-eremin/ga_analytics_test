@@ -13,8 +13,45 @@ import { LoginPage } from './pages/Loginpage'
 import { Layout } from './components/Layout'
 import { RequireAuth } from './hoc/RequireAuth'
 import { AuthProvider } from './hoc/AuthProvider'
+import { useEffect } from 'react'
 
-ReactGA.initialize('G-FT7X3X1NKK')
+// ReactGA.initialize('G-FT7X3X1NKK')
+
+const initializeGA4 = async () => {
+  await ReactGA.initialize('G-FT7X3X1NKK')
+}
+
+const TrackPageView = () => {
+  const location = useLocation();
+
+  useEffect(() => {
+    const trackPage = async () => {
+      // await ReactGA.initialize('G-2VCQLP8SWM')
+      await ReactGA.initialize([
+              {
+                trackingId: 'G-2VCQLP8SWM',
+                gaOptions: {
+                  name: 'homepage_tracker',
+                },
+                // gtagOptions: {...}
+              },
+              {
+                trackingId: 'G-01QY50FKYF',
+                gaOptions: { name: 'blogpage_tracker' }
+              },
+              {
+                trackingId: 'G-RSP3XV0E0G',
+                gaOptions: { name: 'aboutpage_tracker' }
+              }
+            ],
+            { testMode: true }
+      )
+    }
+    trackPage()
+  }, [location])
+  return null
+}
+
 
 function App() {
   const location = useLocation()
@@ -53,6 +90,7 @@ function App() {
 
   return (
     <AuthProvider>
+      <TrackPageView />
       <Routes>
         <Route path="/" element={<Layout />}>
           <Route index element={<Homepage />} />
@@ -78,3 +116,4 @@ function App() {
 }
 
 export default App;
+
