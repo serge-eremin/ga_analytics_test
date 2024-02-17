@@ -1,4 +1,4 @@
-import { Routes, Route, Navigate, useLocation } from 'react-router-dom'
+import { Routes, Route, Navigate } from 'react-router-dom'
 // import ReactGA from 'react-ga4'
 
 import { Homepage } from './pages/Homepage'
@@ -12,7 +12,7 @@ import { LoginPage } from './pages/Loginpage'
 import { Layout } from './components/Layout'
 import { RequireAuth } from './hoc/RequireAuth'
 import { AuthProvider } from './hoc/AuthProvider'
-import { useEffect } from 'react'
+// import { useEffect } from 'react'
 
 function App() {
   //
