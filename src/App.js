@@ -14,38 +14,15 @@ import { Layout } from './components/Layout'
 import { RequireAuth } from './hoc/RequireAuth'
 import { AuthProvider } from './hoc/AuthProvider'
 import { useEffect } from 'react'
-
-// ReactGA.initialize('G-FT7X3X1NKK')
-
-const initializeGA4 = async () => {
-  await ReactGA.initialize('G-FT7X3X1NKK')
-}
+import { InitializeReactGA } from './helper/googleAnalytics'
 
 const TrackPageView = () => {
-  const location = useLocation();
+  const location = useLocation()
+
 
   useEffect(() => {
     const trackPage = async () => {
-      // await ReactGA.initialize('G-2VCQLP8SWM')
-      await ReactGA.initialize([
-              {
-                trackingId: 'G-2VCQLP8SWM',
-                gaOptions: {
-                  name: 'homepage_tracker',
-                },
-                // gtagOptions: {...}
-              },
-              {
-                trackingId: 'G-01QY50FKYF',
-                gaOptions: { name: 'blogpage_tracker' }
-              },
-              {
-                trackingId: 'G-RSP3XV0E0G',
-                gaOptions: { name: 'aboutpage_tracker' }
-              }
-            ],
-            { testMode: true }
-      )
+      InitializeReactGA(ReactGA)
     }
     trackPage()
   }, [location])
@@ -56,37 +33,6 @@ const TrackPageView = () => {
 function App() {
   const location = useLocation()
   console.log({location})
-
-  // useEffect(() => {
-  //   ReactGA.initialize(
-  //     [
-  //       {
-  //         trackingId: 'G-2VCQLP8SWM',
-  //         gaOptions: {
-  //           name: 'homepage_tracker',
-  //         },
-  //         // gtagOptions: {...}
-  //       },
-  //       {
-  //         trackingId: 'G-01QY50FKYF',
-  //         gaOptions: { name: 'blogpage_tracker' }
-  //       },
-  //       {
-  //         trackingId: 'G-RSP3XV0E0G',
-  //         gaOptions: { name: 'aboutpage_tracker' }
-  //       }
-  //     ],
-  //     { testMode: true }
-  //   )
-  //   ReactGA.send({ hitType: "pageview", page: location.pathname, title: "P" })
-  //
-  //   ReactGA.event({
-  //     category: "View Page",
-  //     action: "Go Throw Page",
-  //     label: "your label"
-  //   })
-  //
-  // }, [location.pathname])
 
   return (
     <AuthProvider>
