@@ -17,6 +17,7 @@ import { AuthProvider } from './hoc/AuthProvider'
 function App() {
 
   const location = useLocation()
+  console.log({location})
 
   useEffect(() => {
     ReactGA.initialize(
