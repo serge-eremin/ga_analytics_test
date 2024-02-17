@@ -1,5 +1,5 @@
-import { Routes, Route, Navigate, useLocation, RedirectFunction } from 'react-router-dom'
-import ReactGA from 'react-ga4'
+import { Routes, Route, Navigate, useLocation } from 'react-router-dom'
+// import ReactGA from 'react-ga4'
 
 import { Homepage } from './pages/Homepage'
 import { About } from './pages/Aboutpage'
@@ -15,39 +15,40 @@ import { AuthProvider } from './hoc/AuthProvider'
 import { useEffect } from 'react'
 
 function App() {
+  //
+  // const location = useLocation()
+  //
+  // useEffect(() => {
+  //   ReactGA.initialize(
+  //     [
+  //       {
+  //         trackingId: 'G-2VCQLP8SWM',
+  //         gaOptions: {
+  //           name: 'homepage_tracker',
+  //         },
+  //         // gtagOptions: {...}
+  //       },
+  //       {
+  //         trackingId: 'G-01QY50FKYF',
+  //         gaOptions: { name: 'blogpage_tracker' }
+  //       },
+  //       {
+  //         trackingId: 'G-RSP3XV0E0G',
+  //         gaOptions: { name: 'aboutpage_tracker' }
+  //       }
+  //     ],
+  //     { testMode: true }
+  //   )
+  //   ReactGA.send({ hitType: "pageview", page: location.pathname, title: "P" })
+  //
+  //   ReactGA.event({
+  //     category: "View Page",
+  //     action: "Go Throw Page",
+  //     label: "your label"
+  //   })
+  //
+  // }, [location.pathname])
 
-  const location = useLocation()
-
-  useEffect(() => {
-    ReactGA.initialize(
-      [
-        {
-          trackingId: 'G-2VCQLP8SWM',
-          gaOptions: {
-            name: 'homepage_tracker',
-          },
-          // gtagOptions: {...}
-        },
-        {
-          trackingId: 'G-01QY50FKYF',
-          gaOptions: { name: 'blogpage_tracker' }
-        },
-        {
-          trackingId: 'G-RSP3XV0E0G',
-          gaOptions: { name: 'aboutpage_tracker' }
-        }
-      ],
-      { testMode: true }
-    )
-    ReactGA.send({ hitType: "pageview", page: location.pathname, title: "P" })
-
-    ReactGA.event({
-      category: "View Page",
-      action: "Go Throw Page",
-      label: "your label"
-    })
-
-  }, [location.pathname])
   return (
     <AuthProvider>
       <Routes>
