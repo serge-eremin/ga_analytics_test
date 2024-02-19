@@ -24,7 +24,7 @@ function App() {
     initGA()
     setCount(count + 1)
     console.log([count])
-  }, [pathname, count])
+  }, [pathname])
 
   return (
     <AuthProvider>
