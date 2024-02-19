@@ -1,5 +1,5 @@
-import { useEffect } from 'react'
-import { Routes, Route, Navigate, useLocation } from 'react-router-dom'
+import ReactGA from 'react-ga4'
+import { Routes, Route, Navigate } from 'react-router-dom'
 
 import { Homepage } from './pages/Homepage'
 import { About } from './pages/Aboutpage'
@@ -13,8 +13,6 @@ import { Layout } from './components/Layout'
 import { RequireAuth } from './hoc/RequireAuth'
 import { AuthProvider } from './hoc/AuthProvider'
 import { ScrollToTop } from './googleAnalytics/ScrollToTop'
-import ReactGA from 'react-ga4'
-
 
 ReactGA.initialize('G-HG8261BQHW')
 
