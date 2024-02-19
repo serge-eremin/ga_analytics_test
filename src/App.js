@@ -1,6 +1,5 @@
-// import { useEffect } from 'react'
-import { Routes, Route, Navigate, useLocation } from 'react-router-dom'
-import ReactGA from 'react-ga4'
+import { useEffect } from 'react'
+import { Routes, Route, Navigate } from 'react-router-dom'
 
 import { Homepage } from './pages/Homepage'
 import { About } from './pages/Aboutpage'
@@ -13,31 +12,20 @@ import { LoginPage } from './pages/Loginpage'
 import { Layout } from './components/Layout'
 import { RequireAuth } from './hoc/RequireAuth'
 import { AuthProvider } from './hoc/AuthProvider'
-import { useEffect } from 'react'
-import { InitializeReactGA } from './helper/googleAnalytics'
-
-const TrackPageView = () => {
-  const location = useLocation()
-
-
-  useEffect(() => {
-    const trackPage = async () => {
-      InitializeReactGA(ReactGA)
-    }
-    trackPage()
-  }, [location])
-  return null
-}
+import { initGA, logPageView } from './googleAnalytics/googleAnalyticsV1'
+import { ScrollToTop } from './googleAnalytics/ScrollToTop'
 
 
 function App() {
-  const location = useLocation()
-  console.log({location})
+  useEffect(() => {
+    initGA()
+    logPageView()
+  }, [])
 
   return (
     <AuthProvider>
-      <TrackPageView />
       <Routes>
+        <ScrollToTop />
         <Route path="/" element={<Layout />}>
           <Route index element={<Homepage />} />
           <Route path="about" element={<About />}>
