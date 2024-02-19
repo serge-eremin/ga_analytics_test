@@ -18,11 +18,11 @@ import { ScrollToTop } from './googleAnalytics/ScrollToTop'
 ReactGA.initialize('G-HG8261BQHW')
 
 function App() {
-  const location = useLocation()
+  const { pathname } = useLocation()
 
   useEffect(() => {
-    ReactGA.send({ hitType: 'pageview', page: location.pathname })
-  }, [location])
+    ReactGA.send({ hitType: 'pageview', page: pathname })
+  }, [pathname])
 
   return (
     <AuthProvider>
