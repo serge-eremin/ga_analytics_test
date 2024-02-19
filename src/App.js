@@ -24,7 +24,7 @@ const TrackPageView = () => {
     const trackPage = async () => {
       InitializeReactGA(ReactGA)
     }
-    trackPage()
+    trackPage().then((res) => console.log(res))
   }, [location])
   return null
 }

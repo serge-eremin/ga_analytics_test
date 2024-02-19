@@ -2,8 +2,6 @@ import { useLocation, useNavigate } from 'react-router-dom'
 import { useAuth } from '../hook/useAuth'
 import ReactGA from 'react-ga4'
 
-ReactGA.initialize('G-FT7X3X1NKK')
-
 const onClick = () => {
     ReactGA.event({
       category: "login_category",
