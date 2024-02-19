@@ -1,5 +1,5 @@
-import { useEffect } from 'react'
-import { Routes, Route, Navigate } from 'react-router-dom'
+import { useEffect, useState } from 'react'
+import { Routes, Route, Navigate, useLocation } from 'react-router-dom'
 
 import { Homepage } from './pages/Homepage'
 import { About } from './pages/Aboutpage'
@@ -17,10 +17,14 @@ import { ScrollToTop } from './googleAnalytics/ScrollToTop'
 
 
 function App() {
+  const {pathname} = useLocation()
+   const [count, setCount] = useState(0)
+
   useEffect(() => {
     initGA()
-    logPageView()
-  }, [])
+    setCount(count + 1)
+    console.log([count])
+  }, [pathname])
 
   return (
     <AuthProvider>
