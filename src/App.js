@@ -18,12 +18,9 @@ import { ScrollToTop } from './googleAnalytics/ScrollToTop'
 
 function App() {
   const {pathname} = useLocation()
-   const [count, setCount] = useState(0)
 
   useEffect(() => {
     initGA()
-    setCount(count + 1)
-    console.log([count])
   }, [pathname])
 
   return (
