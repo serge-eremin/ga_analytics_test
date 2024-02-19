@@ -14,8 +14,6 @@ import { RequireAuth } from './hoc/RequireAuth'
 import { AuthProvider } from './hoc/AuthProvider'
 import { initGA } from './googleAnalytics/googleAnalyticsV1'
 import { ScrollToTop } from './googleAnalytics/ScrollToTop'
-import ReactGA from 'react-ga4'
-
 
 function App() {
 
