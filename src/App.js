@@ -12,16 +12,19 @@ import { LoginPage } from './pages/Loginpage'
 import { Layout } from './components/Layout'
 import { RequireAuth } from './hoc/RequireAuth'
 import { AuthProvider } from './hoc/AuthProvider'
-import { initGA, logPageView } from './googleAnalytics/googleAnalyticsV1'
+import { initGA } from './googleAnalytics/googleAnalyticsV1'
 import { ScrollToTop } from './googleAnalytics/ScrollToTop'
 
 
 function App() {
   const {pathname} = useLocation()
+   const [count, setCount] = useState(0)
 
   useEffect(() => {
     initGA()
-  }, [pathname])
+    setCount(count + 1)
+    console.log([count])
+  }, [pathname, count])
 
   return (
     <AuthProvider>
