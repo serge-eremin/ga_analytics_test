@@ -4,12 +4,12 @@ import { logPageView } from './googleAnalyticsV1'
 
 
 export const ScrollToTop = () => {
-  const location = useLocation()
+  const { pathname } = useLocation()
 
   useEffect(() => {
     logPageView()
     window.scrollTo(0, 0);
-  }, [location])
+  }, [pathname])
 
   return null
 }

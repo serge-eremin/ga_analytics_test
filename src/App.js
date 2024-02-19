@@ -1,6 +1,5 @@
 import { useEffect } from 'react'
 import { Routes, Route, Navigate, useLocation } from 'react-router-dom'
-import ReactGA from 'react-ga4'
 
 import { Homepage } from './pages/Homepage'
 import { About } from './pages/Aboutpage'
@@ -13,16 +12,18 @@ import { LoginPage } from './pages/Loginpage'
 import { Layout } from './components/Layout'
 import { RequireAuth } from './hoc/RequireAuth'
 import { AuthProvider } from './hoc/AuthProvider'
+import { initGA } from './googleAnalytics/googleAnalyticsV1'
 import { ScrollToTop } from './googleAnalytics/ScrollToTop'
+import ReactGA from 'react-ga4'
 
-ReactGA.initialize('G-HG8261BQHW')
 
 function App() {
-  const { pathname } = useLocation()
+
+  ReactGA.initialize( 'G-HG8261BQHW')
 
   useEffect(() => {
-    ReactGA.send({ hitType: 'pageview', page: pathname })
-  }, [pathname])
+    initGA()
+  }, [])
 
   return (
     <AuthProvider>
@@ -48,8 +49,8 @@ function App() {
         </Route>
       </Routes>
 </AuthProvider>
-  )
+  );
 }
 
-export default App
+export default App;
 
