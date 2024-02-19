@@ -24,8 +24,8 @@ function App() {
 
   return (
     <AuthProvider>
-      <Routes>
         <ScrollToTop />
+      <Routes>
         <Route path="/" element={<Layout />}>
           <Route index element={<Homepage />} />
           <Route path="about" element={<About />}>
