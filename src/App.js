@@ -1,5 +1,5 @@
 import { useEffect } from 'react'
-import { Routes, Route, Navigate, useLocation } from 'react-router-dom'
+import { Routes, Route, Navigate } from 'react-router-dom'
 
 import { Homepage } from './pages/Homepage'
 import { About } from './pages/Aboutpage'
@@ -18,8 +18,6 @@ import ReactGA from 'react-ga4'
 
 
 function App() {
-
-  ReactGA.initialize( 'G-HG8261BQHW')
 
   useEffect(() => {
     initGA()
